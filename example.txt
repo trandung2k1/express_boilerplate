@@ -1,0 +1,106 @@
+
+query Books{
+  books {
+    id
+    title,
+    genre
+    author {
+      id,
+      name
+      books {
+        id
+        title
+        author {
+          name
+          books {
+            id
+          }
+        }
+      }
+    }
+  }
+}
+query Authors{
+  authors {
+    id,
+    name,
+    age,
+    books {
+      id
+      title,
+      genre
+    }
+   
+  }
+}
+
+query Book($bookId: ID!){
+  book(id: $bookId) {
+    title,
+    genre
+    author {
+      id,
+      name,
+      age
+    }
+  }
+}
+
+
+
+query Author($authorId: ID!){
+  author(id: $authorId) {
+    name,
+    age,
+    books {
+      id
+    }
+  }
+}
+
+mutation CreateAuthor{
+  createAuthor(
+    name: "Dung",
+    age: 22
+  ){
+    name,
+    id,
+    age,
+    books {
+      id
+    }
+  }
+}
+
+mutation CreateBook($createBookAuthorId2: ID!, $title: String, $genre: String){
+  createBook(authorId: $createBookAuthorId2, title: $title, genre: $genre) {
+    title,
+    genre,
+    author {
+      name
+    }
+  }
+}
+
+mutation CreateAuthor($name: String, $age: Int){
+  createAuthor(name: $name, age: $age) {  
+  id
+  name
+  age
+  books {
+    id
+  }
+  }
+})
+
+
+{
+  "bookId": "63e072842e99ecdebe066223",
+  "authorId": "63e0716f2e99ecdebe066213",
+  "createBookAuthorId2": "63e071bc2e99ecdebe066218",
+  "title": "Nam trung tạp ngâm",
+  "genre": "Poetry story",
+  "name": "Ngô Tất Tố",
+  "age": 105,
+  "authorId2": null
+}
