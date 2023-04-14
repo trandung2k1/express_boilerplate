@@ -26,4 +26,7 @@ module.exports = {
     target: 'node',
     externals: [nodeExternals()],
     mode: 'development',
+    experiments: {
+        topLevelAwait: true,
+    },
 };

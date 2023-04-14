@@ -1,8 +1,8 @@
-const site = require('./site.route');
-const auth = require('./auth.route');
+import site from './site.route.js';
+import auth from './auth.route.js';
 const routes = (app) => {
     app.use('/', site);
     app.use('/api/auth', auth);
 };
 
-module.exports = routes;
+export default routes;

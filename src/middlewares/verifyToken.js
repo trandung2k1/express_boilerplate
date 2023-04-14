@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 dotenv.config();
-const verifyToken = (req, res, next) => {
+export const verifyToken = (req, res, next) => {
     const token = req.headers['authorization'];
     if (token) {
         const accessToken = token.split(' ')[1];
@@ -31,7 +31,7 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-const verifyTokenAndUserAuthorization = (req, res, next) => {
+export const verifyTokenAndUserAuthorization = (req, res, next) => {
     verifyToken(req, res, () => {
         if (req.user.userId === req.params.id || req.user.isAdmin) {
             next();
@@ -42,7 +42,7 @@ const verifyTokenAndUserAuthorization = (req, res, next) => {
         }
     });
 };
-const verifyTokenAndAdmin = (req, res, next) => {
+export const verifyTokenAndAdmin = (req, res, next) => {
     verifyToken(req, res, () => {
         if (req.user.isAdmin) {
             next();
@@ -52,9 +52,4 @@ const verifyTokenAndAdmin = (req, res, next) => {
             });
         }
     });
-};
-module.exports = {
-    verifyToken,
-    verifyTokenAndUserAuthorization,
-    verifyTokenAndAdmin,
 };

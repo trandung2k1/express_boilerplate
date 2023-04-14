@@ -1,7 +1,8 @@
-const { Server } = require('socket.io');
-const jwt = require('jsonwebtoken');
-const { supportHandler } = require('./support');
-require('dotenv').config();
+import { Server } from 'socket.io';
+import jwt from 'jsonwebtoken';
+import { supportHandler } from './support.js';
+import dotenv from 'dotenv';
+dotenv.config();
 const socket = (server) => {
     const io = new Server(server, {
         cors: {
@@ -46,4 +47,4 @@ const socket = (server) => {
     io.on('connection', onConnection);
 };
 
-module.exports = socket;
+export default socket;

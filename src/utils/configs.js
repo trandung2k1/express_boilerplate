@@ -1,5 +1,9 @@
-const whitelist = ['http://localhost:3000'];
-const corsOptions = {
+const whitelist = [
+    'http://localhost:3000',
+    '*',
+    'https://studio.apollographql.com',
+];
+export const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
             callback(null, true);
@@ -8,9 +12,7 @@ const corsOptions = {
         }
     },
 };
-const compressionOptions = {
+export const compressionOptions = {
     level: 6,
     threshold: 100 * 1000,
 };
-
-module.exports = { corsOptions, compressionOptions };

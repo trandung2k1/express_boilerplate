@@ -1,5 +1,5 @@
-const { engine } = require('express-handlebars');
-const express = require('express');
+import { engine } from 'express-handlebars';
+import express from 'express';
 const viewEngine = (app) => {
     app.use(express.static('./src/public'));
     app.engine('.hbs', engine({ extname: '.hbs' }));
@@ -7,4 +7,4 @@ const viewEngine = (app) => {
     app.set('views', './src/views');
 };
 
-module.exports = viewEngine;
+export default viewEngine;

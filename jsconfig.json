@@ -8,6 +8,6 @@
         "baseUrl": "./src"
     },
     "lib": ["es2015"],
-    "exclude": ["node_modules", "build"],
+    "exclude": ["node_modules", "demo/build"],
     "include": ["src/**/*.js", "src/index.jsx.js"]
 }

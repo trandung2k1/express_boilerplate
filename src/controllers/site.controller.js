@@ -6,4 +6,4 @@ class SiteController {
     }
 }
 
-module.exports = SiteController;
+export default SiteController;

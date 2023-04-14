@@ -1,5 +1,5 @@
-const User = require('../models/user.model');
-const bcrypt = require('bcrypt');
+import User from '../models/user.model.js';
+import bcrypt from 'bcrypt';
 class AuthService {
     static async register({ firstName, lastName, email, password }) {
         const findUser = await User.findOne({ email });
@@ -30,4 +30,4 @@ class AuthService {
     }
 }
 
-module.exports = AuthService;
+export default AuthService;
